@@ -1,0 +1,184 @@
+# Crear el archivo HTML con el contenido actual del proyecto
+
+html_content = """<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EstudiaFácil</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+    header, footer {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      background-color: #333;
+      padding: 1em;
+    }
+    nav a, nav button {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .container {
+      padding: 2em;
+    }
+    .section {
+      margin-bottom: 2em;
+      padding: 1.5em;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      margin-top: 0;
+    }
+    footer a {
+      color: #aaa;
+      margin: 0 1em;
+      text-decoration: none;
+    }
+    .dark-mode {
+      background-color: #1a1a1a;
+      color: #f0f2f5;
+    }
+    .dark-mode .section {
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EstudiaFácil</h1>
+    <p>Tu espacio para organizar, estudiar y colaborar</p>
+  </header>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#calendario">Calendario</a>
+    <a href="#recursos">Recursos</a>
+    <a href="#comunidad">Comunidad</a>
+    <a href="#herramientas">Herramientas</a>
+    <a href="#pomodoro">Pomodoro</a>
+    <a href="#perfil">Perfil</a>
+    <button onclick="toggleDarkMode()">Modo oscuro</button>
+  </nav>
+
+  <div class="container">
+    <section id="inicio" class="section">
+      <h2>🎓 Bienvenido a EstudiaFácil</h2>
+      <p>Este sitio está diseñado para ayudarte a organizar tu estudio, encontrar recursos útiles y conectarte con una comunidad estudiantil.</p>
+    </section>
+
+    <section id="calendario" class="section">
+      <h2>🗓 Mi Calendario</h2>
+      <form id="calendarForm">
+        <label>Nombre de tarea/examen: <input type="text" id="nombreTarea"></label><br>
+        <label>Fecha: <input type="date" id="fechaTarea"></label><br>
+        <button type="submit">Agregar</button>
+      </form>
+      <ul id="listaCalendario"></ul>
+    </section>
+
+    <section id="recursos" class="section">
+      <h2>📁 Recursos Descargables</h2>
+      <ul>
+        <li>Plantilla de mapa mental</li>
+        <li>Fichas de estudio</li>
+        <li>Rúbricas de evaluación</li>
+        <li>Organizadores gráficos</li>
+      </ul>
+    </section>
+
+    <section id="comunidad" class="section">
+      <h2>💬 Pregunta a la Comunidad</h2>
+      <form id="communityForm">
+        <textarea id="preguntaUsuario" rows="4" cols="50"></textarea><br>
+        <button type="submit">Enviar</button>
+      </form>
+      <ul id="listaPreguntas"></ul>
+    </section>
+
+    <section id="pomodoro" class="section">
+      <h2>⏱ Temporizador Pomodoro</h2>
+      <button onclick="startPomodoro(25 * 60)">Pomodoro (25 min)</button>
+      <button onclick="startPomodoro(5 * 60)">Descanso corto (5 min)</button>
+      <h3 id="timerDisplay">25:00</h3>
+      <button onclick="resetTimer()">Reiniciar</button>
+    </section>
+
+    <section id="perfil" class="section">
+      <h2>🔐 Perfil de Usuario</h2>
+      <form id="perfilForm">
+        <label>Nombre: <input type="text" id="perfilNombre"></label><br>
+        <label>Email: <input type="email" id="perfilEmail"></label><br>
+        <label>Contraseña: <input type="password" id="perfilPassword"></label><br>
+        <button type="submit">Guardar Perfil</button>
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 EstudiaFácil</p>
+  </footer>
+
+  <script>
+    let timer;
+    let timeLeft = 1500;
+
+    function startPomodoro(duration) {
+      clearInterval(timer);
+      timeLeft = duration;
+      timer = setInterval(() => {
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          alert("¡Tiempo terminado!");
+        } else {
+          timeLeft--;
+          updateTimerDisplay();
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timeLeft = 1500;
+      updateTimerDisplay();
+    }
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      document.getElementById("timerDisplay").textContent =
+        minutes + ":" + seconds.toString().padStart(2, "0");
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+</body>
+</html>
+"""
+
+file_path = "/mnt/data/EstudiaFacil.html"
+
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+file_path
