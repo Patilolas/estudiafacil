@@ -7,6 +7,40 @@ html_content = """<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EstudiaFácil</title>
+  /* Animación para las secciones */
+.section {
+    transition: all 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Animación para botones */
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Animación de entrada para Inicio */
+#inicio {
+    animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
   <style>
     body {
       margin: 0;
