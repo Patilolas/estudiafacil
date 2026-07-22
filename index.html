@@ -8,105 +8,118 @@ html_content = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EstudiaFácil</title>
 
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EstudiaFácil</title>
+
   <style>
-    <title>EstudiaFácil</title>
 
-<style>
+    /* Animación para las secciones */
+    .section{
+        transition: all 0.3s ease;
+    }
 
-/* Animación para las secciones */
-.section {
-    transition: all 0.3s ease;
-}
+    .section:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
 
-.section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
+    /* Animación para botones */
+    button{
+        transition: all 0.3s ease;
+    }
 
-/* Animación para botones */
-button {
-    transition: all 0.3s ease;
-}
+    button:hover{
+        transform: scale(1.05);
+    }
 
-button:hover {
-    transform: scale(1.05);
-}
+    /* Animación de entrada */
+    #inicio{
+        animation: aparecer 1s ease;
+    }
 
-/* Animación de entrada para Inicio */
-#inicio {
-    animation: aparecer 1s ease;
-}
+    @keyframes aparecer{
+        from{
+            opacity:0;
+            transform:translateY(30px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
 
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:linear-gradient(135deg,#dbeafe,#eef2ff);
+      color:#333;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    ...
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f2f5;
-      color: #333;
+    header, footer{
+      background:#1a1a1a;
+      color:white;
+      padding:1em;
+      text-align:center;
     }
-    header, footer {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 1em;
-      text-align: center;
+
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:2em;
+      background:#333;
+      padding:1em;
+      position:sticky;
+      top:0;
+      z-index:1000;
     }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2em;
-      background-color: #333;
-      padding: 1em;
+
+    nav a, nav button{
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      background:none;
+      border:none;
+      cursor:pointer;
     }
-    nav a, nav button {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      background: none;
-      border: none;
-      cursor: pointer;
+
+    .container{
+      padding:2em;
+      max-width:1200px;
+      margin:0 auto;
     }
-    .container {
-      padding: 2em;
-      max-width: 1200px;
-      margin: 0 auto;
+
+    .section{
+      margin-bottom:2em;
+      padding:1.5em;
+      background:white;
+      border-radius:12px;
+      box-shadow:0 5px 15px rgba(0,0,0,.1);
     }
-    .section {
-      margin-bottom: 2em;
-      padding: 1.5em;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    .section h2{
+      margin-top:0;
     }
-    .section h2 {
-      margin-top: 0;
+
+    footer a{
+      color:#aaa;
+      margin:0 1em;
+      text-decoration:none;
     }
-    footer a {
-      color: #aaa;
-      margin: 0 1em;
-      text-decoration: none;
+
+    .dark-mode{
+      background:#1a1a1a;
+      color:#f0f2f5;
     }
-    .dark-mode {
-      background-color: #1a1a1a;
-      color: #f0f2f5;
+
+    .dark-mode .section{
+      background:#333;
+      color:white;
     }
-    .dark-mode .section {
-      background-color: #333;
-      color: #fff;
-    }
+
   </style>
 </head>
 <body>
